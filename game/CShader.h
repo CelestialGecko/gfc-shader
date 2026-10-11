@@ -96,6 +96,6 @@ public:
 
 	float GetScale() { return scale; }
 	CVector GetDimensions() { return CVector(col, row); }
-	bool AllowedScale(float s, float addS = NULL) { return addS != NULL ? (s + addS <= 1000 && s + addS >= 1) : (s <= 1000 && s >= 1); }
+	bool AllowedScale(float s, float addS = NULL) { return addS != NULL ? (std::clamp(s + addS, 1.0f, 1000.0f) == (s + addS)) : (std::clamp(s, 1.0f, 1000.0f) == s); }
 };
 

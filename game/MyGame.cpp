@@ -27,6 +27,7 @@ void CMyGame::OnDraw(CGraphics* g)
 	m_shader.OverlayShader(g);
 	*g << centre << "Shader test" << endl;
 	*g << xy(100, 10) << "click up and down arrows to change scale. Current Scale: " << m_shader.GetScale() << endl;
+	*g << xy(100, 30) << "Press B to toggle blending, Press R to toggle rainbow" << endl;
 }
 
 /////////////////////////////////////////////////////
@@ -86,6 +87,14 @@ void CMyGame::OnKeyDown(SDLKey sym, SDLMod mod, Uint16 unicode)
 	if(sym == SDLK_b)
 		if(m_shader.IsBlending()) m_shader.StopBlend();
 		else m_shader.StartBlend(CColor::Red());
+	if(sym == SDLK_s)
+		m_shader.ShiftSaturation(0.1f);
+	if(sym == SDLK_w)
+		m_shader.ShiftSaturation(-0.1f);
+	if(sym == SDLK_v)
+		m_shader.ShiftBrightness(0.1f);
+	if(sym == SDLK_f)
+		m_shader.ShiftBrightness(-0.1f);
 }
 
 void CMyGame::OnKeyUp(SDLKey sym, SDLMod mod, Uint16 unicode)
