@@ -1,10 +1,11 @@
 #pragma once
+#include "CShader.h"
 
 class CMyGame : public CGame
 {
 	// Define sprites and other instance variables here
-	CSpriteOval m_oval;
-	CSpriteRect m_obstacle;
+	CSprite m_background;
+	CShader m_shader;
 
 	const float E = 0.8f;	// restitution coefficient for the collision response
 
